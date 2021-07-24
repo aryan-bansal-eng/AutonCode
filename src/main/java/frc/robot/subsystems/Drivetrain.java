@@ -28,7 +28,7 @@ public class Drivetrain extends SubsystemBase {
   public static final double WHEEL_DIAMETER_M = 0.158D;
   public static final double WHEEL_CIRCUMFERENCE_M = WHEEL_DIAMETER_M * Math.PI;
   
-  public static final int TICKS_PER_ROTATION = 2048;
+  public static final int TICKS_PER_ROTATION = 4096;
 
   public static final int MAX_VOLTAGE = 10;
   public static final int TIMEOUT_MS = 10;
