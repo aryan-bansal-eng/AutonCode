@@ -21,7 +21,9 @@ import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase {
-  
+
+  public static final boolean isCompBot = true;
+
   //found on robot
   public static final double TRACK_WIDTH_M = 0.5883D;
   public static final double GEAR_RATIO = 11.2444D;
@@ -34,9 +36,9 @@ public class Drivetrain extends SubsystemBase {
   public static final int TIMEOUT_MS = 10;
 
   //found through frc-characterization on robot
-  public static final double DRIVE_S = 0.166D;
-  public static final double DRIVE_V = 2.41D;
-  public static final double DRIVE_A = 0.25D;
+  public static final double DRIVE_S = isCompBot ? 0.166D : 0.166D;
+  public static final double DRIVE_V = isCompBot ? 2.53D : 2.41D;
+  public static final double DRIVE_A = isCompBot ? 0.311D : 0.25D;
 
   public static final double MAX_VELOCITY_M = 1.5D;
   public static final double MAX_ACCELERATION_M = 2.0D;
@@ -59,11 +61,10 @@ public class Drivetrain extends SubsystemBase {
 
   public Drivetrain() 
   {
-    leftMaster = new TalonFX(2);
-    leftFollower = new TalonFX(1);
-    rightMaster = new TalonFX(3);
-    rightFollower = new TalonFX(5);
-
+    leftMaster = new TalonFX(isCompBot ? 46 : 2);
+    leftFollower = new TalonFX(isCompBot  ? 9 : 1);
+    rightMaster = new TalonFX(isCompBot  ? 48 : 3);
+    rightFollower = new TalonFX(isCompBot ? 6 : 5);
     leftMaster.configFactoryDefault();
     leftFollower.configFactoryDefault();
     rightMaster.configFactoryDefault();
